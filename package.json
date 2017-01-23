@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/damoclark/axios-gmxhr-adapter/issues"
   },
-  "homepage": "https://github.com/damoclark/axios-gmxhr-adapter#readme"
+  "homepage": "https://github.com/damoclark/axios-gmxhr-adapter#readme",
+  "dependencies": {
+    "gmxhr": "^1.0.0"
+  }
 }
