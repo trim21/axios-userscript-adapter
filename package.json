@@ -1,0 +1,26 @@
+{
+  "name": "axios-gmxhr-adapter",
+  "version": "0.15.0",
+  "description": "GM_xmlhttpRequest adapter for Axios HTTP client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damoclark/axios-gmxhr-adapter.git"
+  },
+  "keywords": [
+    "axios",
+    "adapter",
+    "userscript",
+    "greasemonkey",
+    "tampermonkey"
+  ],
+  "author": "Damien Clark",
+  "license": "LGPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/damoclark/axios-gmxhr-adapter/issues"
+  },
+  "homepage": "https://github.com/damoclark/axios-gmxhr-adapter#readme"
+}
