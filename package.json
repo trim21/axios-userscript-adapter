@@ -2,7 +2,7 @@
   "name": "axios-gmxhr-adapter",
   "version": "0.15.0",
   "description": "GM_xmlhttpRequest adapter for Axios HTTP client",
-  "main": "index.js",
+  "main": "lib/adapters/gm.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
