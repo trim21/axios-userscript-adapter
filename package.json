@@ -1,14 +1,14 @@
 {
-  "name": "axios-gmxhr-adapter",
-  "version": "0.15.3",
+  "name": "axios-userscript-adapter",
+  "version": "0.0.1",
   "description": "GM_xmlhttpRequest adapter for Axios HTTP client",
-  "main": "lib/adapters/gm.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/damoclark/axios-gmxhr-adapter.git"
+    "url": "git@github.com:Trim21/axios-userscript-adapter.git"
   },
   "keywords": [
     "axios",
@@ -17,13 +17,16 @@
     "greasemonkey",
     "tampermonkey"
   ],
-  "author": "Damien Clark",
+  "author": {
+    "name": "Trim21",
+    "email": "trim21me@gmail.com"
+  },
   "license": "LGPL-3.0+",
   "bugs": {
-    "url": "https://github.com/damoclark/axios-gmxhr-adapter/issues"
+    "url": "https://github.com/Trim21/axios-userscript-adapter/issues"
   },
-  "homepage": "https://github.com/damoclark/axios-gmxhr-adapter#readme",
-  "dependencies": {
-    "gmxhr": "^1.0.0"
+  "homepage": "https://github.com/Trim21/axios-userscript-adapter",
+  "peerDependencies": {
+    "axios": "0.18.x"
   }
 }

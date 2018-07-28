@@ -1,2 +1,4 @@
 node_modules/*
 *.komodoproject
+.vscode
+.idea

@@ -1,16 +1,16 @@
 # axios-gmxhr-adapter
 
-[![NPM](https://nodei.co/npm/axios-gmxhr-adapter.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/axios-gmxhr-adapter/)
-
-An [adapter](https://github.com/mzabriskie/axios/tree/master/lib/adapters#readme) for [axios](https://github.com/mzabriskie/axios) to make ajax calls within [userscripts](https://github.com/OpenUserJs/OpenUserJS.org/wiki/Userscript-beginners-HOWTO) via the [GM_xmlhttpRequest](https://wiki.greasespot.net/GM_xmlhttpRequest) function as provided by the [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) and
-[Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en)
+An [adapter](https://github.com/mzabriskie/axios/tree/master/lib/adapters#readme) for 
+[axios](https://github.com/mzabriskie/axios) to make ajax calls within [userscripts](https://github.com/OpenUserJs/OpenUserJS.org/wiki/Userscript-beginners-HOWTO) via the [GM_xmlhttpRequest](https://wiki.greasespot.net/GM_xmlhttpRequest) function as provided
+ by the [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/)
+ and [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en)
 WebExtensions for Firefox and Chromium-based browsers. 
 
 ## Synopsis
 
 ```javascript
 var axios = require('axios') ;
-var adapter = require('axios-gmxhr-adapter') ;
+var adapter = require('axios-userscript-adapter') ;
 
 axios.defaults.adapter = adapter ;
 
@@ -97,21 +97,13 @@ instance.request({
 });
 ```
 
-## See Also
-You may also be interested in the following modules to assist with userscripting:
 
-* [gmxhr](https://github.com/damoclark/gmxhr)
-* [browserify-userscript-header](https://github.com/damoclark/browserify-userscript-header)
-* [browserify-css](https://github.com/cheton/browserify-css)
-* [imgurify](https://github.com/asbjornenge/imgurify)
-* [webworkify](https://github.com/substack/webworkify)
+
 
 ## Licence
 axios-gmxhr-adapter
 Copyright (c) 2017 Damien Clark, [Damo's World](https://damos.world)<br/> <br/>
 Licenced under the terms of the
-[GPLv3](https://www.gnu.org/licenses/gpl.txt)<br/>
-![GPLv3](https://www.gnu.org/graphics/gplv3-127x51.png "GPLv3")
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
