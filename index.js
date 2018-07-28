@@ -64,7 +64,6 @@ module.exports = function xhrAdapter (config) {
     // Send the request
     // Listen for ready state
     let onload = function handleLoad (resp) {
-      console.log(resp)
       // Prepare the response
       var responseHeaders = 'responseHeaders' in resp ? parseHeaders(resp.responseHeaders) : null
       var responseData = !config.responseType || config.responseType === 'text' ? resp.responseText : resp.response
