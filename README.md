@@ -28,15 +28,15 @@ axios.get('https://www.different-server.com/user?ID=12345')
 ## Description
 The [axios documentation](https://github.com/mzabriskie/axios/tree/master/lib/adapters#readme) describes axios adapters as *modules that handle dispatching a request and settling a returned Promise once a response is received.*  The standard axios distribution includes adapters for the browser via `xmlHttpRequest`, and node.js via `http` and `https`.  
 
-Custom adapters are typically used for 'mocking' requests for testing purposes, such as [axios-mock-adapter](https://www.npmjs.com/package/axios-mock-adapter).  `axios-gmxhr-adapter` is specifically for using axios in the browser, chiefly, in [userscripts](https://openuserjs.org/about/Userscript-Beginners-HOWTO) where the `xmlHttpRequest` function for making ajax requests is replaced with `GM_xmlhttpRequest`.  `GM_xmlhttpRequest` is a privileged function available within the [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) and
+Custom adapters are typically used for 'mocking' requests for testing purposes, such as [axios-mock-adapter](https://www.npmjs.com/package/axios-mock-adapter).  `axios-userscript-adapter` is specifically for using axios in the browser, chiefly, in [userscripts](https://openuserjs.org/about/Userscript-Beginners-HOWTO) where the `xmlHttpRequest` function for making ajax requests is replaced with `GM_xmlhttpRequest`.  `GM_xmlhttpRequest` is a privileged function available within the [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) and
 [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en)
  webextensions that allow userscripts to make ajax requests that cross same origin policy boundaries.  In other words, using axios, the userscript can make http requests to sites that didn't originate from the currently loaded web page.  Read the [GM_xmlhttpRequest](https://wiki.greasespot.net/GM_xmlhttpRequest) function wiki page for further details.
 
-After assigning `axios-gmxhr-adapter` as the default adapter:
+After assigning `axios-userscript-adapter` as the default adapter:
 
 ```javascript
 var axios = require('axios') ;
-var adapter = require('axios-gmxhr-adapter') ;
+var adapter = require('axios-userscript-adapter') ;
 
 axios.defaults.adapter = adapter ;
 ```
@@ -44,19 +44,19 @@ axios.defaults.adapter = adapter ;
 all the usual axios goodness is available within your userscript.
 
 ## Requirements
-`axios-gmxhr-adapter` requires axios 0.13.0 or higher
+`axios-userscript-adapter` requires axios 0.13.0 or higher
 
 ## Installation:
 ```bash
-npm install axios axios-gmxhr-adapter
+npm install axios axios-userscript-adapter
 ```
 
 ## Further Examples
-As previously shown, you can set `axios-gmxhr-adapter` as the default adapter, in which case, all axios requests will be dispatched via `GM_xmlhttpRequest`.  However, you can instead specify the adapter on individual requests via a `config` object.  For example:
+As previously shown, you can set `axios-userscript-adapter` as the default adapter, in which case, all axios requests will be dispatched via `GM_xmlhttpRequest`.  However, you can instead specify the adapter on individual requests via a `config` object.  For example:
 
 ```javascript
 var axios = require('axios') ;
-var adapter = require('axios-gmxhr-adapter') ;
+var adapter = require('axios-userscript-adapter') ;
 
 // Send a POST request using GM_xmlhttpRequest
 axios({
@@ -74,7 +74,7 @@ or via any requests made by an instance:
 
 ```javascript
 var axios = require('axios') ;
-var adapter = require('axios-gmxhr-adapter') ;
+var adapter = require('axios-userscript-adapter') ;
 
 var instance = axios.create({
   // `url` is the server URL that will be used for the request
@@ -97,6 +97,9 @@ instance.request({
 });
 ```
 
+## thanks
+
+`axios-userscript-adapter` is base on [`axios-gmxhr-adapter`](https://github.com/damoclark/axios-gmxhr-adapter)
 
 
 
