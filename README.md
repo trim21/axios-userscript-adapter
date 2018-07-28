@@ -1,4 +1,4 @@
-# axios-gmxhr-adapter
+# axios-userscript-adapter
 
 An [adapter](https://github.com/mzabriskie/axios/tree/master/lib/adapters#readme) for 
 [axios](https://github.com/mzabriskie/axios) to make ajax calls within [userscripts](https://github.com/OpenUserJs/OpenUserJS.org/wiki/Userscript-beginners-HOWTO) via the [GM_xmlhttpRequest](https://wiki.greasespot.net/GM_xmlhttpRequest) function as provided
@@ -45,6 +45,8 @@ all the usual axios goodness is available within your userscript.
 
 ## Requirements
 `axios-userscript-adapter` requires axios 0.13.0 or higher
+
+add `// @grant       GM_xmlhttpRequest` to your userscript metadata
 
 ## Installation:
 ```bash
