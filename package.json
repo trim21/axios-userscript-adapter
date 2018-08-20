@@ -2,8 +2,9 @@
   "name": "axios-userscript-adapter",
   "version": "0.0.2",
   "description": "GM_xmlhttpRequest adapter for Axios HTTP client",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "build": "webpack -c webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,6 +27,11 @@
     "url": "https://github.com/Trim21/axios-userscript-adapter/issues"
   },
   "homepage": "https://github.com/Trim21/axios-userscript-adapter",
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  },
   "peerDependencies": {
     "axios": "0.18.x"
   }
