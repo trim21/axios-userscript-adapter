@@ -54,7 +54,33 @@ npm install axios axios-userscript-adapter
 ```
 
 ## Further Examples
-As previously shown, you can set `axios-userscript-adapter` as the default adapter, in which case, all axios requests will be dispatched via `GM_xmlhttpRequest`.  However, you can instead specify the adapter on individual requests via a `config` object.  For example:
+As previously shown, you can set `axios-userscript-adapter` as the default adapter, in which case, all axios requests will be dispatched via `GM_xmlhttpRequest`.  However, you can instead specify the adapter on individual requests via a `config` object. 
+
+```javascript
+// ==UserScript==
+// @name        new user script
+// @namespace   https://trim21.me/
+// @description hello
+// @version     0.0.1
+// @author      Trim21 <trim21me@gmail.com>
+// @match       http*://*/*
+// @require     https://cdn.bootcss.com/axios/0.18.0/axios.min.js
+// @require     https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js
+// @require     https://cdn.bootcss.com/axios/0.18.0/axios.min.js
+// @require     https://cdn.jsdelivr.net/npm/axios-userscript-adapter@0.0.3/dist/axiosGmxhrAdapter.min.js
+// @grant       GM_xmlhttpRequest
+// @run-at      document-end
+// ==/UserScript==
+
+console.log( axios.defaults.adapter );
+axios.defaults.adapter  = axiosGmxhrAdapter;
+
+axios.get('https://httpbin.org/headers');
+```
+
+
+
+For example:
 
 ```javascript
 var axios = require('axios') ;
