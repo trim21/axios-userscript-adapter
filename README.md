@@ -9,20 +9,23 @@ WebExtensions for Firefox and Chromium-based browsers.
 ## Synopsis
 
 ```javascript
-var axios = require('axios') ;
-var adapter = require('axios-userscript-adapter') ;
+// ==UserScript==
+// @name        new user script
+// @namespace   https://trim21.me/
+// @description hello
+// @version     0.0.1
+// @author      Trim21 <trim21me@gmail.com>
+// @match       http*://*/*
+// @require     https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js
+// @require     https://cdn.jsdelivr.net/npm/axios-userscript-adapter@0.0.3/dist/axiosGmxhrAdapter.min.js
+// @grant       GM_xmlhttpRequest
+// @run-at      document-end
+// ==/UserScript==
 
-axios.defaults.adapter = adapter ;
+console.log( axios.defaults.adapter );
+axios.defaults.adapter  = axiosGmxhrAdapter;
 
-// Make a request for a user with a given ID using GM_xmlhttpRequest
-// crossing same origin policy boundaries
-axios.get('https://www.different-server.com/user?ID=12345')
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+axios.get('https://httpbin.org/headers');
 ```
 
 ## Description
@@ -64,9 +67,7 @@ As previously shown, you can set `axios-userscript-adapter` as the default adapt
 // @version     0.0.1
 // @author      Trim21 <trim21me@gmail.com>
 // @match       http*://*/*
-// @require     https://cdn.bootcss.com/axios/0.18.0/axios.min.js
-// @require     https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js
-// @require     https://cdn.bootcss.com/axios/0.18.0/axios.min.js
+// @require     https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js
 // @require     https://cdn.jsdelivr.net/npm/axios-userscript-adapter@0.0.3/dist/axiosGmxhrAdapter.min.js
 // @grant       GM_xmlhttpRequest
 // @run-at      document-end
@@ -78,9 +79,7 @@ axios.defaults.adapter  = axiosGmxhrAdapter;
 axios.get('https://httpbin.org/headers');
 ```
 
-
-
-For example:
+Example with webpack:
 
 ```javascript
 var axios = require('axios') ;
@@ -109,7 +108,7 @@ var instance = axios.create({
   url: 'https://www.different-server.com/user',
 
   // `method` is the request method to be used when making the request
-  method: 'post', 
+  method: 'post',
 
   // `adapter` allows custom handling of requests which makes testing easier.
   // Return a promise and supply a valid response.
