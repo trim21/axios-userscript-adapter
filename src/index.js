@@ -6,8 +6,6 @@ const settle = require('axios/lib/core/settle')
 const buildURL = require('axios/lib/helpers/buildURL')
 const parseHeaders = require('axios/lib/helpers/parseHeaders')
 const createError = require('axios/lib/core/createError')
-// var cookies = require('axios/lib/helpers/cookies')
-var btoa = (typeof window !== 'undefined' && window.btoa) || require('axios/lib/helpers/btoa')
 
 /**
  *
@@ -30,7 +28,6 @@ module.exports = function xhrAdapter (config) {
       var password = config.auth.password || ''
       requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password)
     }
-
 
     // Handle low level network errors
     const onerror = function handleError () {

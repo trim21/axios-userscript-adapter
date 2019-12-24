@@ -16,8 +16,8 @@ WebExtensions for Firefox and Chromium-based browsers.
 // @version     0.0.1
 // @author      Trim21 <trim21me@gmail.com>
 // @match       http*://*/*
-// @require     https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js
-// @require     https://cdn.jsdelivr.net/npm/axios-userscript-adapter@0.0.3/dist/axiosGmxhrAdapter.min.js
+// @require     https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js
+// @require     https://cdn.jsdelivr.net/npm/axios-userscript-adapter@0.0.4/dist/axiosGmxhrAdapter.min.js
 // @grant       GM_xmlhttpRequest
 // @run-at      document-end
 // ==/UserScript==
@@ -47,7 +47,7 @@ axios.defaults.adapter = adapter ;
 all the usual axios goodness is available within your userscript.
 
 ## Requirements
-`axios-userscript-adapter` requires axios 0.13.0 or higher
+`axios-userscript-adapter@0.0.4` requires axios 0.19.0 or higher
 
 add `// @grant       GM_xmlhttpRequest` to your userscript metadata
 
@@ -67,8 +67,8 @@ As previously shown, you can set `axios-userscript-adapter` as the default adapt
 // @version     0.0.1
 // @author      Trim21 <trim21me@gmail.com>
 // @match       http*://*/*
-// @require     https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js
-// @require     https://cdn.jsdelivr.net/npm/axios-userscript-adapter@0.0.3/dist/axiosGmxhrAdapter.min.js
+// @require     https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js
+// @require     https://cdn.jsdelivr.net/npm/axios-userscript-adapter@0.0.4/dist/axiosGmxhrAdapter.min.js
 // @grant       GM_xmlhttpRequest
 // @run-at      document-end
 // ==/UserScript==
@@ -131,7 +131,7 @@ instance.request({
 
 
 ## Licence
-axios-gmxhr-adapter
+Copyright (c) 2018-2019 Damien Clark, [Trim21](https://github.com/Trim21)
 Copyright (c) 2017 Damien Clark, [Damo's World](https://damos.world)<br/> <br/>
 Licenced under the terms of the
 
