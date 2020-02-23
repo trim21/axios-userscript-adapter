@@ -1,0 +1,7 @@
+{
+  "extends": [
+    "github>Trim21/renovate-config",
+    "schedule:monthly"
+  ],
+  "rangeStrategy": "bump"
+}
