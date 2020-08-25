@@ -12,6 +12,10 @@
     "type": "git",
     "url": "git@github.com:Trim21/axios-userscript-adapter.git"
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "keywords": [
     "axios",
     "adapter",
