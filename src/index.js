@@ -13,7 +13,7 @@ const createError = require('axios/lib/core/createError')
  * @return {Promise<any>}
  */
 
-module.exports = function xhrAdapter (config) {
+module.exports = function xhrAdapter(config) {
   return new Promise((resolve, reject) => {
     var requestData = config.data
     var requestHeaders = config.headers
@@ -30,19 +30,19 @@ module.exports = function xhrAdapter (config) {
     }
 
     // Handle low level network errors
-    const onerror = function handleError () {
+    const onerror = function handleError() {
       // Real errors are hidden from us by the browser
       // onerror should only fire if it's a network error
       reject(createError('Network Error', config))
     }
 
     // Handle timeout
-    const ontimeout = function handleTimeout () {
+    const ontimeout = function handleTimeout() {
       reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED'))
     }
 
     // Remove Content-Type if data is undefined
-    utils.forEach(requestHeaders, function setRequestHeader (val, key) {
+    utils.forEach(requestHeaders, function setRequestHeader(val, key) {
       if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
         // Remove Content-Type if data is undefined
         delete requestHeaders[key]
@@ -60,25 +60,30 @@ module.exports = function xhrAdapter (config) {
 
     // Send the request
     // Listen for ready state
-    let onload = function handleLoad (resp) {
+    let onload = function handleLoad(resp) {
       // Prepare the response
       var responseHeaders = 'responseHeaders' in resp ? parseHeaders(resp.responseHeaders) : null
       var responseData = !config.responseType || config.responseType === 'text' ? resp.responseText : resp.response
       var response = {
         data: responseData,
-        // IE sends 1223 instead of 204 (https://github.com/mzabriskie/axios/issues/201)
-        status: resp.status === 1223 ? 204 : resp.status,
-        statusText: resp.status === 1223 ? 'No Content' : resp.statusText,
+        status: resp.status,
+        statusText: resp.statusText,
         headers: responseHeaders,
         config: config,
-        request: null
+        request: {
+          // can't got real XMLHttpRequest object, only some property is available
+          responseURL: resp.finalUrl,
+          status: resp.status,
+          statusText: resp.statusText,
+          responseXML: null,
+        }
       }
       settle(resolve, reject, response)
     }
 
     if (config.cancelToken) {
       // Handle cancellation
-      config.cancelToken.promise.then(function onCanceled (cancel) {
+      config.cancelToken.promise.then(function onCanceled(cancel) {
 
         reject(cancel)
         // Clean up request
