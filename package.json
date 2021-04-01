@@ -1,6 +1,6 @@
 {
   "name": "axios-userscript-adapter",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "GM.xmlHttpRequest adapter for Axios HTTP client",
   "main": "src/index.ts",
   "scripts": {
