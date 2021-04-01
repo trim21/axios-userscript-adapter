@@ -1,8 +1,8 @@
-const path = require("path");
-const config = [];
+const path = require("path")
+const config = []
 
-function generateConfig(name) {
-  let prod = name.indexOf("min") > -1;
+function generateConfig (name) {
+  let prod = name.indexOf("min") > -1
   return {
     mode: prod ? "production" : "development",
     entry: path.resolve(__dirname, "src/index.ts"),
@@ -25,11 +25,11 @@ function generateConfig(name) {
       minimize: prod,
     },
     devtool: "source-map",
-  };
+  }
 }
 
 ["axiosGmxhrAdapter", "axiosGmxhrAdapter.min"].forEach(function (key) {
-  config.push(generateConfig(key));
-});
+  config.push(generateConfig(key))
+})
 
-module.exports = config;
+module.exports = config

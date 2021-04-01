@@ -1,5 +1,3 @@
-"use strict";
-
 import { AxiosRequestConfig, Method, AxiosResponse } from "axios";
 import createError from "axios/lib/core/createError";
 import settle from "axios/lib/core/settle";
