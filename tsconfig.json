@@ -2,14 +2,14 @@
   "compilerOptions": {
     // nullish coalescing operator not supported in OverlayPlugin's Chrome M75
     // TODO: change to ES2020 once OverlayPlugin rolls CEF past M80.
-    "target": "ES2020",
-    "module": "CommonJS",
+    "target": "ESNext",
+    "module": "ESNext",
     "allowJs": false,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "outDir": "./dist",
+    "outDir": "./dist/esm",
     "rootDir": "./src",
     "strict": true,
     "noImplicitAny": true,
