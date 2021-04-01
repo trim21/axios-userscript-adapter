@@ -3,13 +3,13 @@ name: CI
 on:
   pull_request:
     branches:
-      - '**'
+      - "**"
   push:
     branches:
-      - '**'
-      - '!renovate/**'
+      - "**"
+      - "!renovate/**"
     tags:
-      - 'v**'
+      - "v**"
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [ '12', '13' ]
+        node: ["12", "14"]
 
     name: Node ${{ matrix.node }}
 
@@ -39,7 +39,6 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
-#      - run: npm run test:unit
-#      - run: npm run lint
+      - run: npm run lint
 
       - run: npm run build

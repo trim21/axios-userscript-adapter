@@ -1,11 +1,15 @@
 {
   "name": "axios-userscript-adapter",
   "version": "0.0.7",
-  "description": "GM_xmlhttpRequest adapter for Axios HTTP client",
-  "main": "src/index.js",
+  "description": "GM.xmlHttpRequest adapter for Axios HTTP client",
+  "main": "src/index.ts",
   "scripts": {
     "build": "webpack -c webpack.config.js",
     "version": "npm run build",
+    "lint": "eslint ./**/*.ts",
+    "prettier": "prettier ./**/*.yaml ./**/*.json ./**/*.ts ./*.json webpack.config.js",
+    "format": "npm run prettier -- --write",
+    "format-check": "npm run prettier -- --check",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -33,11 +37,26 @@
   },
   "homepage": "https://github.com/Trim21/axios-userscript-adapter",
   "devDependencies": {
-    "axios": "^0.19.0 || ^0.20.0 || ^0.21.0",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "@types/axios": "^0.14.0",
+    "@types/greasemonkey": "^4.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.20.0",
+    "@typescript-eslint/parser": "^4.20.0",
+    "axios": "^0.21.0",
+    "eslint": "^7.23.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.3.1",
+    "prettier": "^2.2.1",
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0"
   },
   "peerDependencies": {
-    "axios": "^0.19.0 || ^0.20.0 || ^0.21.0"
+    "axios": "^0.21.0"
+  },
+  "dependencies": {
+    "ts-loader": "^8.1.0",
+    "typescript": "^4.2.3"
   }
 }

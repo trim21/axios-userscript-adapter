@@ -1,38 +1,35 @@
-const path = require('path')
-const config = []
+const path = require("path");
+const config = [];
 
-function generateConfig (name) {
-  let uglify = name.indexOf('min') > -1
-  let config = {
-    entry: path.resolve(__dirname, 'src/index.js'),
+function generateConfig(name) {
+  let prod = name.indexOf("min") > -1;
+  return {
+    mode: prod ? "production" : "development",
+    entry: path.resolve(__dirname, "src/index.ts"),
     output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: name + '.js',
-      sourceMapFilename: name + '.map',
-      library: 'axiosGmxhrAdapter',
-      libraryTarget: 'umd'
+      path: path.resolve(__dirname, "dist"),
+      filename: name + ".js",
+      sourceMapFilename: name + ".map",
+      library: "axiosGmxhrAdapter",
+      libraryTarget: "umd",
     },
-    node: {
-      process: false
+    module: {
+      rules: [
+        {
+          test: /\.ts$/,
+          loader: "ts-loader",
+        },
+      ],
     },
     optimization: {
-      minimize: false
+      minimize: prod,
     },
-    devtool: 'source-map'
-  }
-
-  if (uglify) {
-    config.optimization.minimize = true
-  }
-
-  return config
+    devtool: "source-map",
+  };
 }
 
-[
-  'axiosGmxhrAdapter',
-  'axiosGmxhrAdapter.min',
-].forEach(function (key) {
-  config.push(generateConfig(key))
-})
+["axiosGmxhrAdapter", "axiosGmxhrAdapter.min"].forEach(function (key) {
+  config.push(generateConfig(key));
+});
 
-module.exports = config
+module.exports = config;

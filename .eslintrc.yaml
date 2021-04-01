@@ -1,0 +1,48 @@
+extends:
+  - standard
+  - prettier
+  - "eslint:recommended"
+  - plugin:import/recommended
+  - plugin:import/typescript
+  - plugin:@typescript-eslint/recommended
+
+plugins:
+  - import
+  - promise
+  - "@typescript-eslint"
+
+parser: "@typescript-eslint/parser"
+
+parserOptions:
+  sourceType: module
+  ecmaVersion: 6
+
+env:
+  browser: true
+  greasemonkey: true
+
+overrides:
+  - files: ["./types/axios/*.d.ts"]
+    rules:
+      import/no-unused-modules: off
+
+rules:
+  quotes: [error, double, "avoidEscape": true]
+  "@typescript-eslint/no-explicit-any": off
+  "comma-dangle": 0
+  "no-unused-vars": "off"
+  "@typescript-eslint/no-unused-vars": "error"
+  "import/order":
+    - error
+    - newlines-between: "always"
+      alphabetize: { order: asc }
+      groups:
+        - "builtin"
+        - "external"
+        - ["index", "sibling", "parent"]
+        - "internal"
+        - "object"
+  "@typescript-eslint/member-delimiter-style":
+    - "error"
+    - "multiline": { "delimiter": "semi", "requireLast": true }
+      "singleline": { "delimiter": "semi", "requireLast": false }

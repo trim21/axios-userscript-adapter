@@ -1,8 +1,4 @@
 {
-  "extends": [
-    "@trim21",
-    "@trim21:js",
-    "@trim21:monthly"
-  ],
+  "extends": ["@trim21", "@trim21:js", "@trim21:monthly"],
   "rangeStrategy": "widen"
 }
