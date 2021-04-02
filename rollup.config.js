@@ -2,6 +2,7 @@
 import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
+import del from "rollup-plugin-delete";
 
 const externals = [
   "axios",
@@ -12,29 +13,37 @@ const externals = [
   "axios/lib/utils",
 ];
 
+const plugins = [
+  commonjs(),
+  typescript({ tsconfig: "./tsconfig.base.json" }),
+  del({
+    targets: "dist/dist",
+    hook: "buildEnd",
+    verbose: true,
+  }),
+];
+
 export default [
   {
     input: "src/index.ts",
     output: [
       {
-        // dir: 'dist',
         file: "dist/axiosGmxhrAdapter.js",
         format: "umd",
         name: "axiosGmxhrAdapter",
         exports: "default",
-        sourcemap: true,
+        sourcemap: false,
       },
       {
-        // dir: 'dist',
         file: "dist/axiosGmxhrAdapter.min.js",
         format: "umd",
         name: "axiosGmxhrAdapter",
         exports: "default",
-        sourcemap: true,
+        sourcemap: false,
         plugins: [terser()],
       },
     ],
-    plugins: [typescript({ target: "es6" }), commonjs()],
+    plugins,
   },
   {
     input: "src/index.ts",
@@ -53,6 +62,6 @@ export default [
         sourcemap: true,
       },
     ],
-    plugins: [typescript({ target: "es6" }), commonjs()],
+    plugins,
   },
 ];
