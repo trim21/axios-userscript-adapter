@@ -1,4 +1,5 @@
 import { AxiosRequestConfig, Method, AxiosResponse } from "axios";
+import buildFullPath from "axios/lib/core/buildFullPath";
 import createError from "axios/lib/core/createError";
 import settle from "axios/lib/core/settle";
 import buildURL from "axios/lib/helpers/buildURL";
@@ -102,7 +103,11 @@ export default function xhrAdapter(config: Config): Promise<AxiosResponse> {
     } else {
       GM.xmlHttpRequest({
         method,
-        url: buildURL(config.url, config.params, config.paramsSerializer),
+        url: buildURL(
+          buildFullPath(config.baseURL, config.url),
+          config.params,
+          config.paramsSerializer,
+        ),
         headers: requestHeaders,
         data: requestData,
         timeout: config.timeout,

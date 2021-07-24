@@ -9,6 +9,7 @@ const externals = [
   "axios/lib/core/createError",
   "axios/lib/core/settle",
   "axios/lib/helpers/buildURL",
+  "axios/lib/core/buildFullPath",
   "axios/lib/helpers/parseHeaders",
   "axios/lib/utils",
 ];
