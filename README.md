@@ -17,18 +17,19 @@ via the [GM.xmlHttpRequest] function as provided by the [Greasemonkey] and [Tamp
 // @require     https://cdn.jsdelivr.net/npm/axios-userscript-adapter@~0.1.2/dist/axiosGmxhrAdapter.min.js
 // @grant       GM.xmlHttpRequest
 // @run-at      document-end
+// @connect     httpbin.org
 // ==/UserScript==
 
 console.log(axios.defaults.adapter);
 axios.defaults.adapter = axiosGmxhrAdapter;
 
-axios.get("https://httpbin.org/headers");
+axios.get("https://httpbin.org/headers").then((res) => console.log(res.data));
 ```
 
 ## Description
 
 The [axios documentation][adapter] describes axios adapters as
-*modules that handle dispatching a request and settling a returned Promise once a response is received*.
+_modules that handle dispatching a request and settling a returned Promise once a response is received_.
 The standard axios distribution includes adapters for the browser via `xmlHttpRequest`, and node.js via `http` and `https`.
 
 Custom adapters are typically used for 'mocking' requests for testing purposes,
@@ -125,13 +126,10 @@ instance.request({
 });
 ```
 
-
 esm support:
 
 ```javascript
-
-import adapter from 'axios-userscript-adapter/dist/esm'
-
+import adapter from "axios-userscript-adapter/dist/esm";
 ```
 
 ## thanks
@@ -141,7 +139,9 @@ import adapter from 'axios-userscript-adapter/dist/esm'
 ## Licence
 
 Copyright (c) 2018-2021 Damien Clark, [Trim21](https://github.com/Trim21)
-Copyright (c) 2017 Damien Clark, [Damo's World](https://damos.world)<br/> <br/>
+
+Copyright (c) 2017 Damien Clark, [Damo's World](https://damos.world)
+
 Licenced under the terms of the
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
@@ -155,10 +155,9 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [adapter]: https://github.com/axios/axios/tree/master/lib/adapters#readme
 [axios]: https://github.com/axios/axios
 [userscript]: https://github.com/OpenUserJs/OpenUserJS.org/wiki/Userscript-beginners-HOWTO
-[GM.xmlHttpRequest]: https://wiki.greasespot.net/GM.xmlHttpRequest
-[Greasemonkey]: https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/
-[Tampermonkey]: https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en
+[gm.xmlhttprequest]: https://wiki.greasespot.net/GM.xmlHttpRequest
+[greasemonkey]: https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/
+[tampermonkey]: https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en
