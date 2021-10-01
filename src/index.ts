@@ -8,22 +8,12 @@ import utils from "axios/lib/utils";
 
 type Config = Exclude<AxiosRequestConfig, "method"> & { method: Method };
 
-type UpperCaseMethod =
-  | "GET"
-  | "DELETE"
-  | "HEAD"
-  | "OPTIONS"
-  | "POST"
-  | "PUT"
-  | "PATCH"
-  | "PURGE"
-  | "LINK"
-  | "UNLINK";
+type UpperCaseMethod = "GET" | "DELETE" | "HEAD" | "OPTIONS" | "POST" | "PUT" | "PATCH" | "PURGE" | "LINK" | "UNLINK";
 
-export default function xhrAdapter(config: Config): Promise<AxiosResponse> {
+export default function xhrAdapter<T>(config: Config): Promise<AxiosResponse<T>> {
   return new Promise((resolve, reject) => {
     let requestData = config.data;
-    const requestHeaders = config.headers;
+    const requestHeaders = config.headers ?? {};
 
     if (utils.isFormData(requestData)) {
       delete requestHeaders["Content-Type"]; // Let the browser set it
@@ -67,12 +57,11 @@ export default function xhrAdapter(config: Config): Promise<AxiosResponse> {
 
     // Send the request
     // Listen for ready state
-    const onload = function handleLoad(resp: GM.Response<any>) {
+    const onload = function handleLoad(resp: GM.Response<T>) {
       // Prepare the response
-      const responseHeaders = "responseHeaders" in resp ? parseHeaders(resp.responseHeaders) : null;
-      const responseData =
-        !config.responseType || config.responseType === "text" ? resp.responseText : resp.response;
-      const response: AxiosResponse = {
+      const responseHeaders = "responseHeaders" in resp ? parseHeaders(resp.responseHeaders) : {};
+      const responseData = !config.responseType || config.responseType === "text" ? resp.responseText : resp.response;
+      const response: AxiosResponse<any> = {
         data: responseData,
         status: resp.status,
         statusText: resp.statusText,
@@ -103,11 +92,7 @@ export default function xhrAdapter(config: Config): Promise<AxiosResponse> {
     } else {
       GM.xmlHttpRequest({
         method,
-        url: buildURL(
-          buildFullPath(config.baseURL, config.url),
-          config.params,
-          config.paramsSerializer,
-        ),
+        url: buildURL(buildFullPath(config.baseURL, config.url), config.params, config.paramsSerializer),
         headers: requestHeaders,
         data: requestData,
         timeout: config.timeout,
