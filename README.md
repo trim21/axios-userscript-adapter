@@ -13,8 +13,8 @@ via the [GM.xmlHttpRequest] function as provided by the [Greasemonkey] and [Tamp
 // @version     0.0.1
 // @author      Trim21 <trim21me@gmail.com>
 // @match       http*://*/*
-// @require     https://cdn.jsdelivr.net/npm/axios@~0.21.1/dist/axios.min.js
-// @require     https://cdn.jsdelivr.net/npm/axios-userscript-adapter@~0.1.2/dist/axiosGmxhrAdapter.min.js
+// @require     https://cdn.jsdelivr.net/npm/axios@^0.22.0/dist/axios.min.js
+// @require     https://cdn.jsdelivr.net/npm/axios-userscript-adapter@~0.1.7/dist/axiosGmxhrAdapter.min.js
 // @grant       GM.xmlHttpRequest
 // @run-at      document-end
 // @connect     httpbin.org
@@ -56,7 +56,7 @@ all the usual axios goodness is available within your userscript.
 
 ## Requirements
 
-`axios-userscript-adapter@0.1.2` requires axios 0.21.0 or higher
+`axios-userscript-adapter` requires axios 0.21.0 or higher
 
 add `// @grant GM.xmlHttpRequest` to your userscript metadata
 
