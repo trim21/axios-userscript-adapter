@@ -34,7 +34,7 @@
     "name": "Trim21",
     "email": "trim21me@gmail.com"
   },
-  "license": "LGPL-3.0+",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Trim21/axios-userscript-adapter/issues"
   },
