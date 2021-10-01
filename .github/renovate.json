@@ -1,4 +1,11 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["@trim21", "@trim21:js", "@trim21:monthly"],
+  "packageRules": [
+    {
+      "matchDepTypes": "devDependencies",
+      "rangeStrategy": "bump"
+    }
+  ],
   "rangeStrategy": "widen"
 }
