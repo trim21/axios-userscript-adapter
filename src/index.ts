@@ -39,7 +39,7 @@ export default function xhrAdapter<T>(config: Config): Promise<AxiosResponse<T>>
     };
 
     // Remove Content-Type if data is undefined
-    utils.forEach(requestHeaders, function setRequestHeader(val, key) {
+    utils.forEach(requestHeaders, function setRequestHeader(val: any, key: string) {
       if (typeof requestData === "undefined" && key.toLowerCase() === "content-type") {
         // Remove Content-Type if data is undefined
         delete requestHeaders[key];

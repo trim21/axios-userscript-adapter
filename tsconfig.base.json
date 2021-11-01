@@ -20,10 +20,16 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "esModuleInterop": true,
-    "typeRoots": ["./node_modules/@types", "./types"],
+    "typeRoots": [
+      "./node_modules/@types",
+    ],
     "skipLibCheck": false,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["./types", "./src"],
-  "exclude": ["./dist"]
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    "./dist"
+  ]
 }
