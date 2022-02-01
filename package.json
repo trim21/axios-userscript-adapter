@@ -46,7 +46,7 @@
     "@types/greasemonkey": "^4.0.2",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
-    "axios": "^0.21.0 || ^0.22.0 || ^0.23.0 || ^0.24.0",
+    "axios": "0.x.x",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.3",
@@ -61,6 +61,6 @@
     "typescript": "^4.4.4"
   },
   "peerDependencies": {
-    "axios": "^0.21.0 || ^0.22.0 || ^0.23.0 || ^0.24.0"
+    "axios": "0.x.x"
   }
 }
