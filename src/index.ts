@@ -93,7 +93,7 @@ export default function xhrAdapter<T>(config: Config): Promise<AxiosResponse<T>>
       GM.xmlHttpRequest({
         method,
         url: buildURL(buildFullPath(config.baseURL, config.url), config.params, config.paramsSerializer),
-        headers: requestHeaders,
+        headers: Object.fromEntries(Object.entries(requestHeaders).map(([key, val]) => [key, val.toString()])),
         data: requestData,
         timeout: config.timeout,
         ontimeout,
