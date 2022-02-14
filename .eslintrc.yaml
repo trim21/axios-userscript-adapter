@@ -1,5 +1,4 @@
 extends:
-  - standard
   - prettier
   - "eslint:recommended"
   - plugin:import/recommended
