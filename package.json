@@ -40,24 +40,24 @@
   },
   "homepage": "https://github.com/Trim21/axios-userscript-adapter",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-node-resolve": "^11.2.1 || ^13.0.0",
-    "@rollup/plugin-typescript": "^8.3.0",
+    "@rollup/plugin-typescript": "^8.3.1",
     "@types/greasemonkey": "^4.0.2",
-    "@typescript-eslint/eslint-plugin": "^5.12.0",
-    "@typescript-eslint/parser": "^5.12.0",
-    "axios": "^0.26.0",
-    "eslint": "^8.9.0",
-    "eslint-config-prettier": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "axios": "^0.26.1",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "6.0.0",
     "prettier": "^2.5.1",
-    "rollup": "^2.67.2",
+    "rollup": "^2.70.1",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.5"
+    "typescript": "^4.6.2"
   },
   "peerDependencies": {
     "axios": "^0.25.0 || ^0.26.0"
