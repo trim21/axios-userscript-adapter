@@ -1,6 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["@trim21", "@trim21:js", "@trim21:monthly"],
+  "extends": [
+    "github>Trim21/renovate-config",
+    "github>Trim21/renovate-config:js",
+    "github>Trim21/renovate-config:monthly"
+  ],
   "packageRules": [
     {
       "matchDepTypes": "devDependencies",
