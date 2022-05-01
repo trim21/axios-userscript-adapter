@@ -1,6 +1,5 @@
-import { AxiosRequestConfig, Method, AxiosResponse } from "axios";
+import { AxiosRequestConfig, Method, AxiosResponse, AxiosError } from "axios";
 import buildFullPath from "axios/lib/core/buildFullPath";
-import createError from "axios/lib/core/createError";
 import settle from "axios/lib/core/settle";
 import buildURL from "axios/lib/helpers/buildURL";
 import parseHeaders from "axios/lib/helpers/parseHeaders";
@@ -23,19 +22,19 @@ export default function xhrAdapter<T>(config: Config): Promise<AxiosResponse<T>>
     if (config.auth) {
       const username = config.auth.username || "";
       const password = config.auth.password || "";
-      requestHeaders.Authorization = "Basic " + btoa(username + ":" + password);
+      requestHeaders.Authorization = "Basic " + Buffer.from(username + ":" + password).toString("base64");
     }
 
     // Handle low level network errors
     const onerror = function handleError() {
       // Real errors are hidden from us by the browser
       // onerror should only fire if it's a network error
-      reject(createError("Network Error", config));
+      reject(new AxiosError("Network Error", AxiosError.ERR_NETWORK, config));
     };
 
     // Handle timeout
     const ontimeout = function handleTimeout() {
-      reject(createError("timeout of " + config.timeout + "ms exceeded", config, "ECONNABORTED"));
+      reject(new AxiosError("timeout of " + config.timeout + "ms exceeded", AxiosError.ECONNABORTED, config));
     };
 
     // Remove Content-Type if data is undefined
@@ -88,7 +87,7 @@ export default function xhrAdapter<T>(config: Config): Promise<AxiosResponse<T>>
 
     const method = config.method.toUpperCase() as UpperCaseMethod;
     if (method === "UNLINK" || method === "PURGE" || method === "LINK") {
-      reject(createError(`${method} is not a supported method by GM.xmlHttpRequest`, config));
+      reject(new AxiosError(`${method} is not a supported method by GM.xmlHttpRequest`));
     } else {
       GM.xmlHttpRequest({
         method,
