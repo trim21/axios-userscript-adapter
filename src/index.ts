@@ -85,6 +85,12 @@ export default function xhrAdapter<T>(config: Config): Promise<AxiosResponse<T>>
       });
     }
 
+    // Change response type
+    let responseType;
+    if (config.responseType && config.responseType !== "json") {
+      responseType = config.responseType;
+    }
+
     const method = config.method.toUpperCase() as UpperCaseMethod;
     if (method === "UNLINK" || method === "PURGE" || method === "LINK") {
       reject(new AxiosError(`${method} is not a supported method by GM.xmlHttpRequest`));
@@ -93,6 +99,7 @@ export default function xhrAdapter<T>(config: Config): Promise<AxiosResponse<T>>
         method,
         url: buildURL(buildFullPath(config.baseURL, config.url), config.params, config.paramsSerializer),
         headers: Object.fromEntries(Object.entries(requestHeaders).map(([key, val]) => [key, val.toString()])),
+        responseType,
         data: requestData,
         timeout: config.timeout,
         ontimeout,
