@@ -126,10 +126,10 @@ instance.request({
 });
 ```
 
-esm support:
+esm is also supported:
 
 ```javascript
-import adapter from "axios-userscript-adapter/dist/esm";
+import adapter from "axios-userscript-adapter";
 ```
 
 ## thanks
