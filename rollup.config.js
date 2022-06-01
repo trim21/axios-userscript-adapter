@@ -3,13 +3,10 @@ import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 
 const globals = {
-  "axios": "axios"
+  axios: "axios",
 };
 
-const plugins = [
-  commonjs(),
-  typescript({ tsconfig: "./tsconfig.base.json" })
-];
+const plugins = [commonjs(), typescript({ tsconfig: "./tsconfig.base.json" })];
 
 export default {
   input: "src/index.ts",
@@ -21,7 +18,7 @@ export default {
       name: "axiosGmxhrAdapter",
       exports: "default",
       globals,
-      sourcemap: true
+      sourcemap: true,
     },
     {
       file: "dist/axiosGmxhrAdapter.min.js",
@@ -30,8 +27,8 @@ export default {
       exports: "default",
       sourcemap: true,
       globals,
-      plugins: [terser()]
-    }
+      plugins: [terser()],
+    },
   ],
-  plugins
+  plugins,
 };

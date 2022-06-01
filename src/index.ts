@@ -7,19 +7,9 @@ import utils from "axios/lib/utils";
 
 type Config = Exclude<AxiosRequestConfig, "method"> & { method: Method };
 
-type UpperCaseMethod =
-  "GET"
-  | "DELETE"
-  | "HEAD"
-  | "OPTIONS"
-  | "POST"
-  | "PUT"
-  | "PATCH"
-  | "PURGE"
-  | "LINK"
-  | "UNLINK";
+type UpperCaseMethod = "GET" | "DELETE" | "HEAD" | "OPTIONS" | "POST" | "PUT" | "PATCH" | "PURGE" | "LINK" | "UNLINK";
 
-export default function xhrAdapter<T> (config: Config): Promise<AxiosResponse<T>> {
+export default function xhrAdapter<T>(config: Config): Promise<AxiosResponse<T>> {
   return new Promise((resolve, reject) => {
     let requestData = config.data;
     const requestHeaders = config.headers ?? {};
@@ -36,19 +26,19 @@ export default function xhrAdapter<T> (config: Config): Promise<AxiosResponse<T>
     }
 
     // Handle low level network errors
-    const onerror = function handleError () {
+    const onerror = function handleError() {
       // Real errors are hidden from us by the browser
       // onerror should only fire if it's a network error
       reject(new AxiosError("Network Error", AxiosError.ERR_NETWORK, config));
     };
 
     // Handle timeout
-    const ontimeout = function handleTimeout () {
+    const ontimeout = function handleTimeout() {
       reject(new AxiosError("timeout of " + config.timeout + "ms exceeded", AxiosError.ECONNABORTED, config));
     };
 
     // Remove Content-Type if data is undefined
-    utils.forEach(requestHeaders, function setRequestHeader (val: any, key: string) {
+    utils.forEach(requestHeaders, function setRequestHeader(val: any, key: string) {
       if (typeof requestData === "undefined" && key.toLowerCase() === "content-type") {
         // Remove Content-Type if data is undefined
         delete requestHeaders[key];
@@ -66,7 +56,7 @@ export default function xhrAdapter<T> (config: Config): Promise<AxiosResponse<T>
 
     // Send the request
     // Listen for ready state
-    const onload = function handleLoad (resp: GM.Response<T>) {
+    const onload = function handleLoad(resp: GM.Response<T>) {
       // Prepare the response
       const responseHeaders = "responseHeaders" in resp ? parseHeaders(resp.responseHeaders) : {};
       const responseData = !config.responseType || config.responseType === "text" ? resp.responseText : resp.response;
@@ -81,15 +71,15 @@ export default function xhrAdapter<T> (config: Config): Promise<AxiosResponse<T>
           responseURL: resp.finalUrl,
           status: resp.status,
           statusText: resp.statusText,
-          responseXML: null
-        }
+          responseXML: null,
+        },
       };
       settle(resolve, reject, response);
     };
 
     if (config.cancelToken) {
       // Handle cancellation
-      config.cancelToken.promise.then(function onCanceled (cancel) {
+      config.cancelToken.promise.then(function onCanceled(cancel) {
         reject(cancel);
         // Clean up request
       });
@@ -114,7 +104,7 @@ export default function xhrAdapter<T> (config: Config): Promise<AxiosResponse<T>
         timeout: config.timeout,
         ontimeout,
         onload,
-        onerror
+        onerror,
       });
     }
   });
