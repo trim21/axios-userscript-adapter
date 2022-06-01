@@ -25,22 +25,14 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
+          cache: npm
 
-      - uses: actions/cache@v1
-        id: cache
-        with:
-          path: ./node_modules
-          key: ${{ runner.os }}-${{ matrix.node }}-${{ hashFiles('**/package-lock.json') }}
+      - run: npm ci
 
-      - name: Install Dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
-
-      - run: npm run lint && npm run format:check
-
-      - run: npx tsc
+      - run: npm run lint
+      - run: npm run format:check
 
       - run: npm run build
