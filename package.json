@@ -11,7 +11,7 @@
     "postbuild": "rimraf ./dist/dist/",
     "version": "npm run build",
     "lint": "eslint ./**/*.ts",
-    "prettier": "prettier ./**/*.yaml ./**/*.json ./**/*.ts ./*.json *.js",
+    "prettier": "prettier ./*",
     "format": "npm run prettier -- --write",
     "format:check": "npm run prettier -- --check",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -60,7 +60,13 @@
     "tslib": "^2.4.0",
     "typescript": "^4.6.4"
   },
+  "lint-staged": {
+    "*.{ts,js,json,yaml,yml}": "prettier -w"
+  },
   "peerDependencies": {
     "axios": "^0.27.0"
+  },
+  "dependencies": {
+    "lint-staged": "^12.5.0"
   }
 }
