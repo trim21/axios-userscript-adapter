@@ -6,8 +6,9 @@
   "module": "dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "scripts": {
-    "build": "rollup -c rollup.config.js",
-    "preversion": "rm -rf ./dist",
+    "prebuild": "rimraf ./dist/",
+    "build": "tsc && tsc -p tsconfig.cjs.json && rollup -c rollup.config.js",
+    "postbuild": "rimraf ./dist/dist/",
     "version": "npm run build",
     "lint": "eslint ./**/*.ts",
     "prettier": "prettier ./**/*.yaml ./**/*.json ./**/*.ts ./*.json *.js",
@@ -53,8 +54,8 @@
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "6.0.0",
     "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
     "rollup": "^2.73.0",
-    "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.4.0",
     "typescript": "^4.6.4"

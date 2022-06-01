@@ -19,8 +19,10 @@
     "noUncheckedIndexedAccess": true,
     "moduleResolution": "node",
     "baseUrl": "./",
-    "esModuleInterop": true,
+    "esModuleInterop": false,
+    "stripInternal": true,
     "typeRoots": ["./node_modules/@types"],
+    "sourceMap": true,
     "skipLibCheck": false,
     "forceConsistentCasingInFileNames": true
   },
