@@ -86,26 +86,29 @@ export default function xhrAdapter<T>(config: Config): Promise<AxiosResponse<T>>
     }
 
     // Change response type
-    let responseType;
+    let responseType: XMLHttpRequestResponseType | undefined;
     if (config.responseType && config.responseType !== "json") {
+      if (config.responseType === "stream") {
+        return reject(new Error("using stream as `responseType` is not supported in browser"));
+      }
       responseType = config.responseType;
     }
 
     const method = config.method.toUpperCase() as UpperCaseMethod;
     if (method === "UNLINK" || method === "PURGE" || method === "LINK") {
-      reject(new AxiosError(`${method} is not a supported method by GM.xmlHttpRequest`));
-    } else {
-      GM.xmlHttpRequest({
-        method,
-        url: buildURL(buildFullPath(config.baseURL, config.url), config.params, config.paramsSerializer),
-        headers: Object.fromEntries(Object.entries(requestHeaders).map(([key, val]) => [key, val.toString()])),
-        responseType: responseType,
-        data: requestData,
-        timeout: config.timeout,
-        ontimeout,
-        onload,
-        onerror,
-      });
+      return reject(new AxiosError(`${method} is not a supported method by GM.xmlHttpRequest`));
     }
+
+    GM.xmlHttpRequest({
+      method,
+      url: buildURL(buildFullPath(config.baseURL, config.url), config.params, config.paramsSerializer),
+      headers: Object.fromEntries(Object.entries(requestHeaders).map(([key, val]) => [key, val.toString()])),
+      responseType: responseType,
+      data: requestData,
+      timeout: config.timeout,
+      ontimeout,
+      onload,
+      onerror,
+    });
   });
 }

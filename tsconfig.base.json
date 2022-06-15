@@ -5,6 +5,7 @@
     "allowJs": false,
     "declaration": true,
     "declarationMap": true,
+    "lib": ["dom"],
     "allowSyntheticDefaultImports": true,
     "outDir": "./dist/esm",
     "rootDir": "./src",
