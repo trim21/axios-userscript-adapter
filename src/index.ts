@@ -89,7 +89,7 @@ export default function xhrAdapter<T>(config: Config): Promise<AxiosResponse<T>>
     let responseType: XMLHttpRequestResponseType | undefined;
     if (config.responseType && config.responseType !== "json") {
       if (config.responseType === "stream") {
-        return reject(new Error("using stream as `responseType` is not supported in browser"));
+        return reject(new AxiosError("using stream as `responseType` is not supported in browser"));
       }
       responseType = config.responseType;
     }
