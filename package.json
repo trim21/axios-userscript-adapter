@@ -47,7 +47,7 @@
     "@types/greasemonkey": "^4.0.3",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
-    "axios": "^0.27.2",
+    "axios": "^1.0.0-alpha.1",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "2.26.0",
@@ -64,7 +64,7 @@
     "*.{ts,js,json,yaml,yml}": "prettier -w"
   },
   "peerDependencies": {
-    "axios": "^0.27.0"
+    "axios": "^1.0.0-alpha.1"
   },
   "dependencies": {
     "lint-staged": "^12.5.0 || ^13.0.0"
