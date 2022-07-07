@@ -9,7 +9,7 @@
     "prebuild": "rimraf ./dist/",
     "build": "tsc && tsc -p tsconfig.cjs.json && rollup -c rollup.config.js",
     "postbuild": "rimraf ./dist/dist/",
-    "version": "npm run build",
+    "version": "yarn build",
     "lint": "eslint ./**/*.ts",
     "format": "prettier --write ./",
     "format:check": "prettier --check ./",
