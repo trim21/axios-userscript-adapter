@@ -129,4 +129,4 @@ export default function xhrAdapter<T> (config: Config): Promise<AxiosResponse<T>
       });
     }
   });
-};
+}
