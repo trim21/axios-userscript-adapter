@@ -11,9 +11,8 @@
     "postbuild": "rimraf ./dist/dist/",
     "version": "npm run build",
     "lint": "eslint ./**/*.ts",
-    "prettier": "prettier ./*",
-    "format": "npm run prettier -- --write",
-    "format:check": "npm run prettier -- --check",
+    "format": "prettier --write ./",
+    "format:check": "prettier --check ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
