@@ -41,7 +41,7 @@
   "homepage": "https://github.com/Trim21/axios-userscript-adapter",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-node-resolve": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^14.1.0",
     "@rollup/plugin-typescript": "^8.5.0",
     "@types/greasemonkey": "^4.0.4",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
