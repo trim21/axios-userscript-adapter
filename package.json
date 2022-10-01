@@ -5,10 +5,10 @@
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
+  "jsdelivr": "./dist/axiosGmxhrAdapter.min.js",
   "scripts": {
     "prebuild": "rimraf ./dist/",
-    "build": "tsc && tsc -p tsconfig.cjs.json && rollup -c rollup.config.js",
-    "postbuild": "rimraf ./dist/dist/",
+    "build": "tsc --declaration --emitDeclarationOnly && node build.cjs",
     "version": "yarn build",
     "lint": "eslint ./**/*.ts",
     "format": "prettier --write ./",
@@ -40,13 +40,11 @@
   },
   "homepage": "https://github.com/Trim21/axios-userscript-adapter",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-node-resolve": "^14.1.0",
-    "@rollup/plugin-typescript": "^8.5.0",
     "@types/greasemonkey": "^4.0.4",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "axios": "^1.0.0-alpha.1",
+    "esbuild": "^0.15.10",
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "2.26.0",
@@ -54,9 +52,6 @@
     "eslint-plugin-promise": "6.0.1",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.79.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "tslib": "^2.4.0",
     "typescript": "^4.8.3"
   },
   "lint-staged": {
