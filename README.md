@@ -14,7 +14,7 @@ via the [GM.xmlHttpRequest] function as provided by the [Greasemonkey] and [Tamp
 // @author      Trim21 <trim21me@gmail.com>
 // @match       http*://*/*
 // @require     https://cdn.jsdelivr.net/npm/axios@v1.0.0-alpha.1/dist/axios.min.js
-// @require     https://cdn.jsdelivr.net/npm/axios-userscript-adapter@0.2.0-alpha.1
+// @require     https://cdn.jsdelivr.net/npm/axios-userscript-adapter@0.2.0-alpha.2
 // @grant       GM.xmlHttpRequest
 // @run-at      document-end
 // @connect     httpbin.org

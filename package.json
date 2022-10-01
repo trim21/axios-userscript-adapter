@@ -8,7 +8,7 @@
   "jsdelivr": "./dist/axiosGmxhrAdapter.min.js",
   "scripts": {
     "prebuild": "rimraf ./dist/",
-    "build": "tsc --declaration --emitDeclarationOnly && node build.cjs",
+    "build": "tsc --declaration --emitDeclarationOnly && webpack && node build.cjs",
     "version": "yarn build",
     "lint": "eslint ./**/*.ts",
     "format": "prettier --write ./",
@@ -45,6 +45,7 @@
     "@typescript-eslint/parser": "^5.37.0",
     "axios": "^1.0.0-alpha.1",
     "esbuild": "^0.15.10",
+    "esbuild-loader": "^2.20.0",
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "2.26.0",
@@ -52,7 +53,9 @@
     "eslint-plugin-promise": "6.0.1",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   },
   "lint-staged": {
     "*.{ts,js,json,yaml,yml}": "prettier -w"

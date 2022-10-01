@@ -1,6 +1,31 @@
 {
-  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./dist/esm"
-  }
+    "target": "ESNext",
+    "module": "ESNext",
+    "allowJs": false,
+    "declaration": true,
+    "declarationMap": true,
+    "lib": ["dom"],
+    "allowSyntheticDefaultImports": false,
+    "outDir": "./dist/esm",
+    "rootDir": "./src",
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "esModuleInterop": false,
+    "stripInternal": true,
+    "sourceMap": true,
+    "skipLibCheck": false,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["./src"],
+  "exclude": ["./dist"]
 }
