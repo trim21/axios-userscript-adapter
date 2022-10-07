@@ -1,5 +1,14 @@
 # axios-userscript-adapter
 
+## Deprecated
+
+axios 1.0.0 stop exporting utils in its `lib` directory, it only exporting its axios class now.
+It will be painfully for me to maintain this adapter for axios>=1.0.0.
+
+Consider to use a fetch api provided by https://github.com/trim21/gm-fetch
+
+## Description
+
 An [adapter] for [axios] to make ajax calls within [UserScript][userscript]
 via the [GM.xmlHttpRequest] function as provided by the [Greasemonkey] and [Tampermonkey] WebExtensions for Firefox and Chromium-based browsers.
 
